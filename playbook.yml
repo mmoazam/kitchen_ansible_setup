@@ -1,0 +1,9 @@
+---
+
+- hosts: default-wittman-centos-72-ansible
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+    - apache
