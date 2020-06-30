@@ -1,9 +1,10 @@
 ---
+ - hosts: all
+   become: true
+   remote_user: ubuntu
+   vars:
+     NODEJS_VERSION: 8
 
-- hosts: default-wittman-centos-72-ansible
-  remote_user: root
-  become: yes
-  become_method: sudo
-
-  roles:
-    - apache
+   roles:
+     - nodejs
+     - nginx

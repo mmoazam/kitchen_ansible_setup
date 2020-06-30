@@ -1,29 +1,21 @@
 ---
-
 driver:
   name: vagrant
-  customize:
-    audio: none
 
 provisioner:
-  hosts: default-wittman-centos-72-ansible
   name: ansible_playbook
-  require_chef_for_busser: false
-  require_ruby_for_busser: false
-  ansible_version: latest
-  ansible_verbose: true
-  roles_path: ./roles
+  hosts: test-kitchen
   playbook: ./playbook.yml
-
-platforms:
-  - name: wittman/centos-7.2-ansible
 
 verifier:
   name: inspec
 
+platforms:
+  - name: ubuntu-18.04
+    verifier:
+      inspec_tests:
+        - test/integration/default
+
 suites:
   - name: default
-    verifier: 
-      inspec_tests: 
-        - test/integration/default
 
